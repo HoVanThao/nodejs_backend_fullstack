@@ -1,19 +1,21 @@
 const connection = require('../config/database')
 
 const getHomepage = (req, res) => {
-    //process data
-    //call model
+    // //process data
+    // //call model
 
-    let users = [];
-    connection.query(
-        'SELECT * FROM Users u',
-        function (err, results, fields) {
-            users = results;
-            console.log(">>> results home page = ", results);
-            console.log(">>> check users ", users);
-            res.send(JSON.stringify(users));
-        }
-    );
+    // let users = [];
+    // connection.query(
+    //     'SELECT * FROM Users u',
+    //     function (err, results, fields) {
+    //         users = results;
+    //         console.log(">>> results home page = ", results);
+    //         console.log(">>> check users ", users);
+    //         res.send(JSON.stringify(users));
+    //     }
+    // );
+
+    return res.render('home.ejs');
 
 }
 
