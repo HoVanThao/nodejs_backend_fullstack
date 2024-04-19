@@ -28,6 +28,21 @@ const getHoVanThao = (req, res) => {
     res.render('sample.ejs')
 }
 
+const postCreateUser = (req, res) => {
+
+    connection.query(
+        `INSERT INTO Users(email, name, city) VALUES (?, ?, ?)`,
+        [req.body.email, req.body.name, req.body.city],
+        function (err, results) {
+            console.log(results);
+            res.send('them moi thanh cong')
+        }
+
+    );
+
+    res.send('tao moi thanh cong')
+}
+
 module.exports = {
-    getHomepage, getABC, getHoVanThao
+    getHomepage, getABC, getHoVanThao, postCreateUser
 }

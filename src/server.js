@@ -15,6 +15,9 @@ const app = express() // app cua express
 const port = process.env.PORT || 8888 //port
 const hostname = process.env.hostname
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 //config tamplate engine, nói cho thằng express biết là sài nó
 configViewEngine(app)
 

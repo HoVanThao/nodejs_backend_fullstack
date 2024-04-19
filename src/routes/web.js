@@ -1,5 +1,5 @@
 const express = require('express')
-const { getHomepage, getABC, getHoVanThao } = require('../controllers/homeController')
+const { getHomepage, getABC, getHoVanThao, postCreateUser } = require('../controllers/homeController')
 const router = express.Router()
 
 //route.Method('/route', handler)
@@ -14,5 +14,7 @@ router.get('/', getHomepage)
 router.get('/abc', getABC)
 
 router.get('/HoVanThao', getHoVanThao)
+
+router.post('/create-user', postCreateUser)
 
 module.exports = router //export default
