@@ -1,5 +1,5 @@
 const express = require('express')
-const { getHomepage, getABC, getHoVanThao, postCreateUser } = require('../controllers/homeController')
+const { getHomepage, postCreateUser, getCreatePage } = require('../controllers/homeController')
 const router = express.Router()
 
 //route.Method('/route', handler)
@@ -11,9 +11,7 @@ const router = express.Router()
 // })
 router.get('/', getHomepage)
 
-router.get('/abc', getABC)
-
-router.get('/HoVanThao', getHoVanThao)
+router.get('/create', getCreatePage)
 
 router.post('/create-user', postCreateUser)
 

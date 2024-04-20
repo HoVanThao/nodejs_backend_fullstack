@@ -1,48 +1,40 @@
 const connection = require('../config/database')
 
 const getHomepage = (req, res) => {
-    // //process data
-    // //call model
-
-    // let users = [];
-    // connection.query(
-    //     'SELECT * FROM Users u',
-    //     function (err, results, fields) {
-    //         users = results;
-    //         console.log(">>> results home page = ", results);
-    //         console.log(">>> check users ", users);
-    //         res.send(JSON.stringify(users));
-    //     }
-    // );
-
     return res.render('home.ejs');
 
 }
 
-const getABC = (req, res) => {
-    res.send('check abc')
+const postCreateUser = async (req, res) => {
+
+    // connection.query(
+    //     `INSERT INTO Users(email, name, city) VALUES (?, ?, ?)`,
+    //     [req.body.email, req.body.name, req.body.city],
+    //     function (err, results) {
+    //         console.log(results);
+    //         res.send('them moi thanh cong')
+    //     }
+    // )
+
+    let [results, fields] = await connection.query(
+        `INSERT INTO Users(email, name, city) VALUES (?, ?, ?)`, [req.body.email, req.body.name, req.body.city]
+    )
+    console.log('>>> check result: ', results);
+    res.send('them moi thanh cong')
 }
 
-const getHoVanThao = (req, res) => {
-    // res.send('<h1> Ho Van Thao </h1>')
-    res.render('sample.ejs')
+const getCreatePage = (req, res) => {
+    res.render('create.ejs')
 }
 
-const postCreateUser = (req, res) => {
+// const getABC = (req, res) => {
+//     res.send('check abc')
+// }
 
-    connection.query(
-        `INSERT INTO Users(email, name, city) VALUES (?, ?, ?)`,
-        [req.body.email, req.body.name, req.body.city],
-        function (err, results) {
-            console.log(results);
-            res.send('them moi thanh cong')
-        }
-
-    );
-
-    res.send('tao moi thanh cong')
-}
+// const getHoVanThao = (req, res) => {
+//     res.render('sample.ejs')
+// }
 
 module.exports = {
-    getHomepage, getABC, getHoVanThao, postCreateUser
+    getHomepage, postCreateUser, getCreatePage
 }
